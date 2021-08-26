@@ -1,0 +1,28 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "bootstrap": "npx lerna bootstrap",
+    "build": "npx lerna run --stream dev:build && yarn clean && yarn copy:all:widgets",
+    "copy:all:widgets": "copyfiles -f ./Widgets/**/build/*.js* ../widgets && yarn copy:styles",
+    "copy:styles": "npx ncp Widgets/LearningWidgetSample/build/css ../css && npx ncp Widgets/LearningWidgetSample/build/fonts ../fonts",
+    "clean": "rimraf ../widgets"
+  },
+  "dependencies": {
+    "@momentum-ui/core": "19.10.3",
+    "@momentum-ui/icons": "8.8.3",
+    "@momentum-ui/utils": "6.2.13",
+    "@momentum-ui/web-components": "^2.1.0",
+    "gridstack": "^4.2.3",
+    "lit-element": "^2.3.1",
+    "lit-html": "^1.2.1"
+  },
+  "devDependencies": {
+    "copy-dir": "^1.3.0",
+    "copyfiles": "^2.4.1",
+    "lerna": "^4.0.0",
+    "ncp": "^2.0.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2"
+  }
+}
